@@ -33,4 +33,5 @@ class Enemy(object):
 
 def randomDim(dimensions):
     # pass in (x0, x1, y0, y1)
+    # initialize random integers for x0, x1, y0, y1
     pass
