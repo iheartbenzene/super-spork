@@ -7,7 +7,7 @@ Clone the repo via SSH:
 
 `git clone git@github.com:iheartbenzene/super-spork.git`
 
-Clone the repo via SSL:
+Clone the repo via HTTPS:
 
 `https://github.com/iheartbenzene/super-spork.git`
 
@@ -20,3 +20,5 @@ Project description goes here.
 + Numpy
 + Sklearn
 + ...
+
+Or use `pip install -r package_requirements.txt`
