@@ -15,10 +15,6 @@ Clone the repo via HTTPS:
 
 Project description goes here.
 
-##### Packages used:
+##### To install packages:
 
-+ Numpy
-+ Sklearn
-+ ...
-
-Or use `pip install -r package_requirements.txt`
+`pip install -r package_requirements.txt`
