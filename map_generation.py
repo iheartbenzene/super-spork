@@ -36,7 +36,7 @@ starting_tile = tile_layout.defaultStartTile(rotateDeg=45)
 tiles = tile_layout.tilePlane(starting_tile, depth=5)
 
 d = Drawing(4, 4, origin='center')
-d.draw(euclid.shapes.Circle(0,0,1), fill='blue')
+d.draw(euclid.shapes.Circle(0,0,4), fill='blue')
 drawTiles(d, tiles)
 
 d.setRenderSize=(w=400)
