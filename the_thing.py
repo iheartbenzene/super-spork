@@ -109,6 +109,7 @@ class Enemy(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        self.counter = 0
 
     # def __init__(self):
     #     pygame.sprite.Sprite.__init__(self)
@@ -121,6 +122,19 @@ class Enemy(pygame.sprite.Sprite):
             # self.images[0]
             # self.image = self.images[0]
             # self.rect = self.image.get_rect()
+
+    def move(self):
+        distance = 80
+        speed = 8
+
+        if self.counter >= 0 and self.counter <= distance:
+            self.rect.x += 1
+        elif self.counter >= distance and self.counter <= 2*distance:
+            self.rect.x -= 1
+        else:
+            self.counter = 0
+
+        self.counter += 1
 
 class Level():
     def bad(lvl, eloc):
@@ -209,5 +223,8 @@ while main == True:
     player.update()
     player_list.draw(world)
     enemy_list.draw(world)
+    for e in enemy_list:
+        e.move()
+
     pygame.display.flip()
     clock.tick(fps)
