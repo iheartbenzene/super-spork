@@ -87,3 +87,6 @@ while main == True:
 
     # world.blit(backdrop, backdropbox)
     world.fill(BLUE)
+
+    pygame.display.flip()
+    clock.tick(fps)
