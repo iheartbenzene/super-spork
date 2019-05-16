@@ -42,6 +42,35 @@ import sys
 import os
 
 '''
+setup
+'''
+
+BLUE = (25, 25, 200)
+BLACK = (23, 23, 23)
+WHITE = (254, 254, 254)
+ALPHA = (0, 255, 0)
+
+worldx = 960
+worldy = 720
+fps = 40
+anims_cycle = 4
+clock = pygame.time.Clock()
+pygame.init()
+
+world = pygame.display.set_mode([worldx, worldy])
+backdrop = pygame.image.load(os.path.join('images', 'stage.png').convert())
+backdropbox = world.get_rect()
+
+player = Player()
+player.rect.x = 0
+player.rect.y = 0
+
+player_list = pygame.sprite.Group()
+player_list.add(player)
+
+
+
+'''
 objects
 '''
 
@@ -71,34 +100,6 @@ class Player(pygame.sprite.Sprite):
             # self.image = self.images[0]
             # self.rect = self.image.get_rect()
         
-
-
-'''
-setup
-'''
-
-BLUE = (25, 25, 200)
-BLACK = (23, 23, 23)
-WHITE = (254, 254, 254)
-ALPHA = (0, 255, 0)
-
-worldx = 960
-worldy = 720
-fps = 40
-anims_cycle = 4
-clock = pygame.time.Clock()
-pygame.init()
-
-world = pygame.display.set_mode([worldx, worldy])
-backdrop = pygame.image.load(os.path.join('images', 'stage.png').convert())
-backdropbox = world.get_rect()
-
-player = Player()
-player.rect.x = 0
-player.rect.y = 0
-
-player_list = pygame.sprite.Group()
-player_list.add(player)
 
 '''
 main loop

@@ -9,11 +9,6 @@ from hyperbolic.poincare import Transform
 from hyperbolic.poincare.util import radialEuclidToPoincare, radialPoincareToEuclid, poincareToEuclidFactor, triangleSideForAngles
 import hyperbolic.tiles as htiles
 
-def drawTiles(drawing, tiles):
-    for tile in tiles:
-        d.draw(tile, hwidth=0.2, fill="white")
-    for tile in tiles:
-        d.draw(tile, drawVerts=True, hradius=0.3, hwidth=0.2, fill="black", opacity=0.6)
 
 t1 = 4
 t2 = 3
@@ -37,6 +32,13 @@ tiles = tile_layout.tilePlane(starting_tile, depth=5)
 
 d = Drawing(2, 2, origin='center')
 d.draw(euclid.shapes.Circle(0, 0, 4), fill='blue')
+
+def drawTiles(drawing, tiles):
+    for tile in tiles:
+        d.draw(tile, hwidth=0.2, fill="white")
+    for tile in tiles:
+        d.draw(tile, drawVerts=True, hradius=0.3, hwidth=0.2, fill="black", opacity=0.6)
+
 drawTiles(d, tiles)
 
 d.setRenderSize(w=400)
