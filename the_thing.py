@@ -51,11 +51,20 @@ objects
 setup
 '''
 
+BLUE = (25, 25, 200)
+BLACK = (23, 23, 23)
+WHITE = (254, 254, 254)
+
 worldx = 960
 worldy = 720
 fps = 40
 anims_cycle = 4
+clock = pygame.time.Clock()
+pygame.init()
 
+world = pygame.display.set_mode([worldx, worldy])
+backdrop = pygame.image.load(os.path.join('images', 'stage.png').convert())
+backdropbox = world.get_rect()
 
 
 '''
