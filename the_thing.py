@@ -156,6 +156,7 @@ while main == True:
 
     # world.blit(backdrop, backdropbox)
     world.fill(BLUE)
+    player.update()
     player_list.draw(world)
     pygame.display.flip()
     clock.tick(fps)
