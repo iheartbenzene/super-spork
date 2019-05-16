@@ -70,5 +70,20 @@ backdropbox = world.get_rect()
 '''
 main loop
 '''
+main = True
 
+while main == True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT():
+            pygame.quit()
+            sys.exit()
+            main = False
 
+        elif event.type == pygame.KEYDOWN:
+            if event.key == ord('q'):
+                pygame.quit()
+                sys.exit()
+                main = False
+
+    # world.blit(backdrop, backdropbox)
+    world.fill(BLUE)
