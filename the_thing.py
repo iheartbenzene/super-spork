@@ -50,6 +50,8 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.images = []
         img = pygame.image.load(os.path.join('images', 'hero.png')).convert()
+        img.convert_alpha()
+        img.set_colorkey(ALPHA)
         self.images.append(img)
         self.images[0]
         self.image = self.images[0]
@@ -61,11 +63,13 @@ class Player(pygame.sprite.Sprite):
     #     pygame.sprite.Sprite.__init__(self)
     #     self.images = []
     #     for i in range(1, 5):
-    #         img = pygame.image.load(os.path.join('images', 'hero' + str(i) + '.png')).convert()
-    #         self.images.append(img)
-    #         self.images[0]
-    #         self.image = self.images[0]
-    #         self.rect = self.image.get_rect()
+            # img = pygame.image.load(os.path.join('images', 'hero' + str(i) + '.png')).convert()
+            # img.convert_alpha()
+            # img.set_colorkey(ALPHA)
+            # self.images.append(img)
+            # self.images[0]
+            # self.image = self.images[0]
+            # self.rect = self.image.get_rect()
         
 
 
@@ -76,6 +80,7 @@ setup
 BLUE = (25, 25, 200)
 BLACK = (23, 23, 23)
 WHITE = (254, 254, 254)
+ALPHA = (0, 255, 0)
 
 worldx = 960
 worldy = 720
@@ -88,6 +93,12 @@ world = pygame.display.set_mode([worldx, worldy])
 backdrop = pygame.image.load(os.path.join('images', 'stage.png').convert())
 backdropbox = world.get_rect()
 
+player = Player()
+player.rect.x = 0
+player.rect.y = 0
+
+player_list = pygame.sprite.Group()
+player_list.add(player)
 
 '''
 main loop
@@ -102,7 +113,19 @@ while main == True:
             sys.exit()
             main = False
 
-        elif event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT or event.key == ord('a'):
+                print('left')
+            if event.key == pygame.K_RIGHT or event.key == ord('d'):
+                print('right')
+            if event.key == pygame.K_UP or event.key == ord('w'):
+                print('jump')
+                        
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == ord('a'):
+                print('left stop')
+            if event.key == pygame.K_RIGHT or event.key == ord('d'):
+                print('right stop')
             if event.key == ord('q'):
                 pygame.quit()
                 sys.exit()
@@ -110,6 +133,6 @@ while main == True:
 
     # world.blit(backdrop, backdropbox)
     world.fill(BLUE)
-
+    player_list.draw(world)
     pygame.display.flip()
     clock.tick(fps)
