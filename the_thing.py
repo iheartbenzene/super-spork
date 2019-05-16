@@ -48,6 +48,9 @@ objects
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
+        self.movex = 0
+        self.movey = 0
+        self.frame = 0
         self.images = []
         img = pygame.image.load(os.path.join('images', 'hero.png')).convert()
         img.convert_alpha()
@@ -71,6 +74,26 @@ class Player(pygame.sprite.Sprite):
             # self.image = self.images[0]
             # self.rect = self.image.get_rect()
         
+    def control(self, x, y):
+        self.movex += x
+        self.movey += y
+
+    def update(self):
+        self.rect.x = self.rect.x + self.movex
+        self.rect.y = self.rect.y + self.movey
+
+        # With the animations
+        # if self.movex < 0:
+        #     self.frame += 1
+        #     if self.frame > 3 * anims_cycle:
+        #         self.frame = 0
+        #     self.image = self.images[self.frame//anims_cycle]
+
+        # if self.movex > 0:
+        #     self.frame += 1
+        #     if self.frame > 3 * anims_cycle:
+        #         self.frame = 0
+        #     self.image = self.images[(self.frame//anims_cycle) + 4]
 
 '''
 setup
@@ -98,6 +121,7 @@ player.rect.y = 0
 
 player_list = pygame.sprite.Group()
 player_list.add(player)
+steps = 10
 
 '''
 main loop
@@ -114,17 +138,17 @@ while main == True:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT or event.key == ord('a'):
-                print('left')
+                player.control(-steps, 0)
             if event.key == pygame.K_RIGHT or event.key == ord('d'):
-                print('right')
+                player.control(steps, 0)
             if event.key == pygame.K_UP or event.key == ord('w'):
                 print('jump')
                         
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == ord('a'):
-                print('left stop')
+                player.control(steps, 0)
             if event.key == pygame.K_RIGHT or event.key == ord('d'):
-                print('right stop')
+                player.control(-steps, 0)
             if event.key == ord('q'):
                 pygame.quit()
                 sys.exit()
