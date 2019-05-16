@@ -6,3 +6,4 @@ hyperbolic
 drawSvg
 tensorflow
 keras
+pygame
