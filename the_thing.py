@@ -45,6 +45,28 @@ import os
 objects
 '''
 
+class Player(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.images = []
+        img = pygame.image.load(os.path.join('images', 'hero.png')).convert()
+        self.images.append(img)
+        self.images[0]
+        self.image = self.images[0]
+        self.rect = self.image.get_rect()
+
+    # with a walk cycle instead
+
+    # def __init__(self):
+    #     pygame.sprite.Sprite.__init__(self)
+    #     self.images = []
+    #     for i in range(1, 5):
+    #         img = pygame.image.load(os.path.join('images', 'hero' + str(i) + '.png')).convert()
+    #         self.images.append(img)
+    #         self.images[0]
+    #         self.image = self.images[0]
+    #         self.rect = self.image.get_rect()
+        
 
 
 '''
@@ -70,6 +92,7 @@ backdropbox = world.get_rect()
 '''
 main loop
 '''
+
 main = True
 
 while main == True:
