@@ -22,8 +22,8 @@ s = 3
 theta1, theta2 = math.pi*2/t1, math.pi*2/t2
 phiSum = math.pi*2/s
 
-r1 = triangleSideForAngles((1/2)*(theta1, phiSum, theta2)
-r2 = triangleSideForAngles((1/2)*(theta2, phiSum, theta1)
+r1 = triangleSideForAngles(theta1/2, phiSum/2, theta2/2)
+r2 = triangleSideForAngles(theta2/2, phiSum/2, theta1/2)
 
 tile_generator1 = htiles.TileGen.makeRegular(t1, hr=r1, skip=1)
 tile_generator2 = htiles.TileGen.makeRegular(t2, hr=r2, skip=1)
@@ -35,9 +35,11 @@ starting_tile = tile_layout.defaultStartTile(rotateDeg=45)
 
 tiles = tile_layout.tilePlane(starting_tile, depth=5)
 
-d = Drawing(4, 4, origin='center')
-d.draw(euclid.shapes.Circle(0,0,4), fill='blue')
+d = Drawing(2, 2, origin='center')
+d.draw(euclid.shapes.Circle(0, 0, 4), fill='blue')
 drawTiles(d, tiles)
 
-d.setRenderSize=(w=400)
+d.setRenderSize(w=400)
 d.saveSvg('images/tileTriangleSquare.svg')
+
+d
