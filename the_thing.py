@@ -107,6 +107,7 @@ ALPHA = (0, 255, 0)
 worldx = 960
 worldy = 720
 fps = 40
+frame_per_sec = fps
 anims_cycle = 4
 clock = pygame.time.Clock()
 pygame.init()
