@@ -1,4 +1,3 @@
-math
 numpy
 scipy
 sklearn
@@ -6,3 +5,4 @@ hyperbolic
 drawSvg
 tensorflow
 keras
+pyGame
